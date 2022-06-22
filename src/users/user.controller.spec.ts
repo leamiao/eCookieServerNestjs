@@ -37,7 +37,9 @@ describe('UsersController', () => {
   it('should return all users', async() => {
     const result : User[] = [];
 
-    jest.spyOn(usersService, 'findAll').mockImplementation((): Promise<User[]> => Promise.resolve(result)); 
+    jest.spyOn(usersService, 'findAll').mockImplementation((): Promise<User[]> => {
+        return Promise.resolve(result);
+    }); 
 
     expect(await usersController.getUsers).toBe(result);
   });
